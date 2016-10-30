@@ -14,7 +14,7 @@ namespace Task2.Logic.Tests
 
         private static double[][] array = new double[][] { 
             new double[] { 20, 300, -12 },
-            new double[] { 20, 300, -12, int.MaxValue },
+            new double[] { 20, 300, -400, int.MaxValue },
             new double[] { 20, int.MinValue },
             new double[] { 20, 300, -12, 100, 0, 1594984465 },
             new double[] { 20 }
@@ -48,7 +48,22 @@ namespace Task2.Logic.Tests
         public void SortTest()
         {
             Sort.BubbleSort(array, byAsc: false, rowSum: true);
-            Assert.IsTrue(array.SequenceEqual(arraySumExpected));
+            Assert.IsTrue(IsEqual(array, arraySumExpected));
+        }
+
+        public bool IsEqual(double[][] actual, double[][] expected)
+        {
+            for (int i = 0; i < actual.Length; i++)
+            {
+                if (actual[i].Length != expected[i].Length)
+                    return false;
+                for (int j = 0; j < actual[i].Length; j++)
+                {
+                    if (actual[i][j] != expected[i][j])
+                        return false;
+                }
+            }
+            return true;
         }
     }
 }
