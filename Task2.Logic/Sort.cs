@@ -22,7 +22,7 @@ namespace Task2.Logic
 
             for (int i = 0; i < array.Length; i++)
             {
-                double prevousRow = RowSum(array[i]);
+                double prevousRow = sortMethod(array[i]);
 
                 for (int j = array.Length - 1; j > i; j--)
                 {
