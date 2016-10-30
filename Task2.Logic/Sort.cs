@@ -20,20 +20,19 @@ namespace Task2.Logic
             if (rowMin)
                 sortMethod = RowMinNum;
 
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < array.Length - 1; i++)
             {
-                double prevousRow = sortMethod(array[i]);
-
-                for (int j = array.Length - 1; j > i; j--)
+                for (int j = 0; j < array.Length - 1; j++)
                 {
-                    double currentRow = sortMethod(array[j]);
+                    double prevousRow = sortMethod(array[j]);
+                    double currentRow = sortMethod(array[j + 1]);
                     if (byAsc)
                     {
                         if (currentRow < prevousRow)
                         {
                             double[] tempArray = array[j];
-                            array[j] = array[i];
-                            array[i] = tempArray;
+                            array[j] = array[j + 1];
+                            array[j + 1] = tempArray;
                         }
                     }
                     else
@@ -41,13 +40,11 @@ namespace Task2.Logic
                         if (currentRow > prevousRow)
                         {
                             double[] tempArray = array[j];
-                            array[j] = array[i];
-                            array[i] = tempArray;
+                            array[j] = array[j + 1];
+                            array[j + 1] = tempArray;
                         }
                     }
                 }
-
-                
 
             }
         }
@@ -89,7 +86,7 @@ namespace Task2.Logic
                     min = array[i];
             }
             return min;
-        }       
+        }
 
         #endregion
 
