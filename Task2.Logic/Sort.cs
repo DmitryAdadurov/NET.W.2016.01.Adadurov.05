@@ -20,30 +20,34 @@ namespace Task2.Logic
             if (rowMin)
                 sortMethod = RowMinNum;
 
-            for (int i = 0; i < array.Length - 1; i++)
+            for (int i = 0; i < array.Length; i++)
             {
                 double prevousRow = RowSum(array[i]);
-                int swapPlace = i;
-                for (int j = 1; j < array.Length; j++)
+
+                for (int j = array.Length - 1; j > i; j--)
                 {
+                    double currentRow = sortMethod(array[j]);
                     if (byAsc)
                     {
-                        if (sortMethod(array[j]) < prevousRow)
-                            swapPlace = j;
+                        if (currentRow < prevousRow)
+                        {
+                            double[] tempArray = array[j];
+                            array[j] = array[i];
+                            array[i] = tempArray;
+                        }
                     }
                     else
                     {
-                        if (sortMethod(array[j]) > prevousRow)
-                            swapPlace = j;
+                        if (currentRow > prevousRow)
+                        {
+                            double[] tempArray = array[j];
+                            array[j] = array[i];
+                            array[i] = tempArray;
+                        }
                     }
                 }
 
-                if (swapPlace != i)
-                {
-                    double[] tempArray = array[swapPlace];
-                    array[swapPlace] = array[i];
-                    array[i] = tempArray;
-                }
+                
 
             }
         }
