@@ -30,5 +30,6 @@ namespace Task1.Logic.Tests
             int actual = Calculations.BinaryGCD(numbers);
             Assert.AreEqual(expected, actual);
         }
+
     }
 }

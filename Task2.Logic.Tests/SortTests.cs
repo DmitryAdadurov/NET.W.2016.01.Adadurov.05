@@ -31,8 +31,9 @@ namespace Task2.Logic.Tests
             new double[] { 20, int.MinValue }
         };
 
+        ISortMethod sortMethod = new RowSum();
 
-            Sort.BubbleSort(array, byAsc: false, rowSum: true);
+            Sort.BubbleSort(array, sortMethod, byAsc: false);
             Assert.IsTrue(IsEqual(array, arraySumExpected));
         }
 
@@ -58,8 +59,9 @@ namespace Task2.Logic.Tests
             new double[] { 20 }
         };
 
+            ISortMethod sortMethod = new RowMaxNum();
 
-            Sort.BubbleSort(array, byAsc: false, rowMax: true);
+            Sort.BubbleSort(array, sortMethod, byAsc: false);
             Assert.IsTrue(IsEqual(array, arrayMaxExpected));
         }
 
@@ -85,8 +87,9 @@ namespace Task2.Logic.Tests
         };
 
 
+            ISortMethod sortMethod = new RowMinNum();
 
-            Sort.BubbleSort(array, byAsc: true, rowMin: true);
+            Sort.BubbleSort(array, sortMethod, byAsc: true);
             Assert.IsTrue(IsEqual(array, arrayMinExpected));
         }
 
