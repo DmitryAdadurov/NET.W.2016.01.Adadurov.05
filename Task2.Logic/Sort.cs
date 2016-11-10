@@ -26,6 +26,7 @@ namespace Task2.Logic
                 array = array.Reverse().ToArray();
         }
 
+
         public static void BubbleSort(double[][] array, Delegate sortMethod, bool byAsc = true)
         {
             if (sortMethod.Target is IComparer<double[]>)

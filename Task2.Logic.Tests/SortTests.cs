@@ -13,6 +13,7 @@ namespace Task2.Logic.Tests
     public class SortTests
     {
         
+
         [Test]
         public void SortTest_SumSort()
         {
