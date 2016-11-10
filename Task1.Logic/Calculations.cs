@@ -8,20 +8,15 @@ namespace Task1.Logic
 {
     public class Calculations
     {
-
-        private delegate int GCD(params int[] numbers);
-
-        public static int GCD(GCD calculationMethod, params int[] numbers)
-        {
-            return calculationMethod(numbers);
-        }
+        private delegate int CalculationMethod(int a, int b);
 
         public static int EuclideanGCD(params int[] numbers)
         {
-            CheckArray(numbers);
+            int? temp = CheckArray(numbers, FindGCD);
 
-            if (numbers.Length == 1)
-                return numbers[0];
+            if (temp != null)
+                return Convert.ToInt32(temp);
+
 
             int gcd = FindGCD(numbers[0], numbers[1]);
 
@@ -39,10 +34,10 @@ namespace Task1.Logic
 
         public static int BinaryGCD(params int[] numbers)
         {
-            CheckArray(numbers);
+            int? temp = CheckArray(numbers, BinaryFindGCD);
 
-            if (numbers.Length == 1)
-                return numbers[0];
+            if (temp != null)
+                return Convert.ToInt32(temp);
 
             int gcd = BinaryFindGCD(numbers[0], numbers[1]);
 
@@ -51,7 +46,7 @@ namespace Task1.Logic
 
             for (int i = 2; i < numbers.Length; i++)
             {
-                gcd = FindGCD(gcd, numbers[i]);
+                gcd = BinaryFindGCD(gcd, numbers[i]);
             }
 
             return gcd;
@@ -136,7 +131,7 @@ namespace Task1.Logic
         }
 
 
-        private static bool CheckArray(int[] numbers)
+        private static int? CheckArray(int[] numbers, CalculationMethod cm)
         {
             if (numbers == null)
                 throw new ArgumentNullException();
@@ -144,7 +139,13 @@ namespace Task1.Logic
             if (numbers.Length == 0)
                 throw new ArgumentException();
 
-            return true;
+            if (numbers.Length == 1)
+                return numbers[0];
+
+            if (numbers.Length == 2)
+                return cm(numbers[0], numbers[1]);
+
+            return null;
         }
 
         #endregion
