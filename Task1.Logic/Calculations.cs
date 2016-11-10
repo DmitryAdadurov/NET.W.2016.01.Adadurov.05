@@ -17,13 +17,9 @@ namespace Task1.Logic
             if (temp != null)
                 return Convert.ToInt32(temp);
 
+            int gcd = numbers[0];
 
-            int gcd = FindGCD(numbers[0], numbers[1]);
-
-            if (numbers.Length == 2)
-                return gcd;
-
-            for (int i = 2; i < numbers.Length; i++)
+            for (int i = 1; i < numbers.Length; i++)
             {
                 gcd = FindGCD(gcd, numbers[i]);
             }
@@ -39,12 +35,9 @@ namespace Task1.Logic
             if (temp != null)
                 return Convert.ToInt32(temp);
 
-            int gcd = BinaryFindGCD(numbers[0], numbers[1]);
+            int gcd = numbers[0];
 
-            if (numbers.Length == 2)
-                return gcd;
-
-            for (int i = 2; i < numbers.Length; i++)
+            for (int i = 1; i < numbers.Length; i++)
             {
                 gcd = BinaryFindGCD(gcd, numbers[i]);
             }
