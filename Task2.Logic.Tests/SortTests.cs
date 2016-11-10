@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using Task2.Logic;
+using Task2.Comparers;
 
 namespace Task2.Logic.Tests
 {
@@ -31,7 +32,7 @@ namespace Task2.Logic.Tests
             new double[] { 20, int.MinValue }
         };
 
-        ISortMethod sortMethod = new RowSum();
+        IComparer<double[]> sortMethod = new RowSum();
 
             Sort.BubbleSort(array, sortMethod, byAsc: false);
             Assert.IsTrue(IsEqual(array, arraySumExpected));
@@ -59,7 +60,7 @@ namespace Task2.Logic.Tests
             new double[] { 20 }
         };
 
-            ISortMethod sortMethod = new RowMaxNum();
+            IComparer<double[]> sortMethod = new RowMaxNum();
 
             Sort.BubbleSort(array, sortMethod, byAsc: false);
             Assert.IsTrue(IsEqual(array, arrayMaxExpected));
@@ -87,9 +88,9 @@ namespace Task2.Logic.Tests
         };
 
 
-            ISortMethod sortMethod = new RowMinNum();
+            IComparer<double[]> sortMethod = new RowMinNum();
 
-            Sort.BubbleSort(array, sortMethod, byAsc: true);
+            Sort.BubbleSort(array, sortMethod, byAsc: false);
             Assert.IsTrue(IsEqual(array, arrayMinExpected));
         }
 
