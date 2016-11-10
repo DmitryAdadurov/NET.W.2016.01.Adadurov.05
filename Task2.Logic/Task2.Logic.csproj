@@ -43,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DoubleHelper.cs" />
     <Compile Include="Sort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SortInterfaceViaDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
