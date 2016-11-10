@@ -8,6 +8,14 @@ namespace Task1.Logic
 {
     public class Calculations
     {
+
+        private delegate int GCD(params int[] numbers);
+
+        public static int GCD(GCD calculationMethod, params int[] numbers)
+        {
+            return calculationMethod(numbers);
+        }
+
         public static int EuclideanGCD(params int[] numbers)
         {
             CheckArray(numbers);
