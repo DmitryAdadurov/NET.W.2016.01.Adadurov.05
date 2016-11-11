@@ -7,17 +7,14 @@ using System.Threading.Tasks;
 
 namespace Task2.Logic
 {
-    public class SortInterfaceViaDelegate
+    public class SortInterfaceToDelegate
     {
-        private delegate int SortMethod(double[] x, double[] y);
-
         public static void BubbleSort(double[][] array, IComparer<double[]> sortMethod, bool byAsc = true)
         {
-            SortMethod sm = new SortMethod(sortMethod.Compare);
-            BubbleSort(array, sm, byAsc);
+            BubbleSort(array, sortMethod.Compare, byAsc);
         }
 
-        public static void BubbleSort(double[][] array, Delegate sortMethod, bool byAsc = true)
+        public static void BubbleSort(double[][] array, Comparison<double[]> sortMethod, bool byAsc = true)
         {
             for (int i = 0; i < array.Length - 1; i++)
             {

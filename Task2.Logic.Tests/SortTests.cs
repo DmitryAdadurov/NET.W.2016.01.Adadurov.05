@@ -35,8 +35,7 @@ namespace Task2.Logic.Tests
 
             IComparer<double[]> sortMethod = new RowSum();
 
-            //Sort.BubbleSort(array, sortMethod, byAsc: false);
-            SortInterfaceViaDelegate.BubbleSort(array, sortMethod, byAsc: false);
+            SortInterfaceToDelegate.BubbleSort(array, sortMethod, false);
             Assert.IsTrue(IsEqual(array, arraySumExpected));
         }
 
@@ -59,9 +58,7 @@ namespace Task2.Logic.Tests
             new double[] { 20, int.MinValue }
         };
 
-            SortMethodDelegate smd = new SortMethodDelegate(new RowSum().Compare);
-
-            Sort.BubbleSort(array, smd, byAsc: false);
+            SortDelegateToInterface.BubbleSort(array, new RowSum().Compare, byAsc: false);
             Assert.IsTrue(IsEqual(array, arraySumExpected));
         }
 
@@ -90,7 +87,7 @@ namespace Task2.Logic.Tests
 
             IComparer<double[]> sortMethod = new RowMaxNum();
 
-            Sort.BubbleSort(array, sortMethod, byAsc: false);
+            SortDelegateToInterface.BubbleSort(array, sortMethod, byAsc: false);
             Assert.IsTrue(IsEqual(array, arrayMaxExpected));
         }
 
@@ -118,7 +115,7 @@ namespace Task2.Logic.Tests
 
             IComparer<double[]> sortMethod = new RowMinNum();
 
-            Sort.BubbleSort(array, sortMethod, byAsc: false);
+            SortDelegateToInterface.BubbleSort(array, sortMethod, byAsc: false);
             Assert.IsTrue(IsEqual(array, arrayMinExpected));
         }
 

@@ -8,8 +8,6 @@ namespace Task1.Logic
 {
     public class Calculations
     {
-        private delegate int CalculationMethod(int a, int b);
-
         public static int EuclideanGCD(params int[] numbers)
         {
             int? temp = CheckArray(numbers, FindGCD);
@@ -17,14 +15,7 @@ namespace Task1.Logic
             if (temp != null)
                 return Convert.ToInt32(temp);
 
-            int gcd = numbers[0];
-
-            for (int i = 1; i < numbers.Length; i++)
-            {
-                gcd = FindGCD(gcd, numbers[i]);
-            }
-
-            return gcd;
+            return Iterator(FindGCD, numbers);
         }
 
 
@@ -35,17 +26,21 @@ namespace Task1.Logic
             if (temp != null)
                 return Convert.ToInt32(temp);
 
+            return Iterator(BinaryFindGCD, numbers);
+        }
+
+        #region Private Methods
+
+        private static int Iterator(Func<int, int, int> method, int[] numbers)
+        {
             int gcd = numbers[0];
 
             for (int i = 1; i < numbers.Length; i++)
             {
-                gcd = BinaryFindGCD(gcd, numbers[i]);
+                gcd = method(gcd, numbers[i]);
             }
-
             return gcd;
         }
-
-        #region Private Methods
 
         private static int BinaryFindGCD(int first, int second)
         {
@@ -124,7 +119,7 @@ namespace Task1.Logic
         }
 
 
-        private static int? CheckArray(int[] numbers, CalculationMethod cm)
+        private static int? CheckArray(int[] numbers, Func<int, int, int> cm)
         {
             if (numbers == null)
                 throw new ArgumentNullException();

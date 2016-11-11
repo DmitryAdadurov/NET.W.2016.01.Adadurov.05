@@ -44,9 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DoubleHelper.cs" />
-    <Compile Include="Sort.cs" />
+    <Compile Include="SortDelegateToInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SortInterfaceViaDelegate.cs" />
+    <Compile Include="SortInterfaceToDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

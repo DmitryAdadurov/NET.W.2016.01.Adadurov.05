@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task2.Logic
 {
-    public static class Sort
+    public static class SortDelegateToInterface
     {
         public static void BubbleSort(double[][] array, IComparer<double[]> sortMethod, bool byAsc = true)
         {
@@ -27,10 +27,26 @@ namespace Task2.Logic
         }
 
 
-        public static void BubbleSort(double[][] array, Delegate sortMethod, bool byAsc = true)
+        public static void BubbleSort(double[][] array, Comparison<double[]> comparer, bool byAsc = true)
         {
-            if (sortMethod.Target is IComparer<double[]>)
-                BubbleSort(array, sortMethod.Target as IComparer<double[]>, byAsc);
+            SortAdapter sa = new SortAdapter(comparer);
+            BubbleSort(array, sa, byAsc);
         }
     }
+
+    public class SortAdapter : IComparer<double[]>
+    {
+        private readonly Comparison<double[]> _comparer;
+
+        public SortAdapter(Comparison<double[]> comparer)
+        {
+            _comparer = comparer;
+        }
+
+        public int Compare(double[] x, double[] y)
+        {
+            return _comparer(x, y);
+        }
+    }
+
 }

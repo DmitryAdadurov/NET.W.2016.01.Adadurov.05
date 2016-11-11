@@ -50,6 +50,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Task2.Comparers\Task2.Comparers.csproj">
       <Project>{159d5610-d890-44a5-b6b2-fd2bf97cd007}</Project>
       <Name>Task2.Comparers</Name>
@@ -58,9 +61,6 @@
       <Project>{7e7423c3-b580-4604-91e9-2535da5148c5}</Project>
       <Name>Task2.Logic</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
